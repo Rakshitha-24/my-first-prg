@@ -1,0 +1,14 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        if(nums == null) return new int[]{-1, -1};
+        int len = nums.length;
+        int index = binarySearch(0, len - 1, nums, target);
+        if(-1 == index) return new int[]{-1, -1};
+        else{
+            int high = index;
+            while(++high < len && nums[high] == target){};
+            int low = index;
+            while(--low >= 0 && nums[low] == target){}
+            return new int[]{low + 1, high - 1};
+        }
+    }
